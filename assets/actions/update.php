@@ -6,7 +6,12 @@
     session_start();
 
     if($_SESSION['logged_in'] !== true) {
-        header('Location: login.php');
+        header('Location: ../../login.php');
+        exit;
+    }
+
+    if (!isset($_SESSION['admin']) && $_SESSION['admin'] == false){
+        header('Location: ../../index.php');
         exit;
     }
 
@@ -45,7 +50,8 @@
                         echo "<th scope='row'>" . $row['id'] . "</th>";
                         echo "<td>" . $row['nameUser'] . "</td>";
                         echo "<td>" . $row['email'] . "</td>";
-                        echo "<td><a href='updateForm.php' class='bg-secondary text-light p-2 rounded-2 text-decoration-none'>M</a></td>";
+                        echo "<td><a href='updateForm.php?id=" . $row['id'] . "&nameUser=" . $row['nameUser'] . "' class='bg-secondary text-light p-2 rounded-2 text-decoration-none'>M</a></td>";
+
                         echo "</tr>";
                     }
                 } else {

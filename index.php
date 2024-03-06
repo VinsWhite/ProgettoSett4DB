@@ -17,13 +17,14 @@
         <h3>Cosa vuoi fare?</h3>
             <div class="container text-center mt-3">
                 <div class="row align-items-start">
-                    <a href="assets/actions/read.php" class="col bg-dark p-3 border-end azioni-1 text-decoration-none text-light">VISUALIZZA UTENTI</a>
-                   
-                    <a href="assets/actions/add.php" class="col bg-dark p-3 border-end azioni-1 text-decoration-none text-light">AGGIUNGI UTENTI</a>
+                <a href="assets/actions/read.php" class="col bg-dark p-3 border-end azioni-1 text-decoration-none text-light">VISUALIZZA UTENTI</a>
+                    <?php if(isset($_SESSION['admin']) && $_SESSION['admin'] == true) {
+                        echo "<a href='assets/actions/add.php' class='col bg-dark p-3 border-end azioni-1 text-decoration-none text-light'>AGGIUNGI UTENTI</a>
 
-                    <a href="assets/actions/delete.php" class="col bg-danger p-3 border-end azioni-2 text-decoration-none text-light">CANCELLA UTENTI</a>
-     
-                    <a href="assets/actions/update.php" class="col bg-dark p-3 azioni-1 text-decoration-none text-light">MODIFICA UTENTI</a>
+                        <a href='assets/actions/delete.php' class='col bg-danger p-3 border-end azioni-2 text-decoration-none text-light'>CANCELLA UTENTI</a>
+         
+                        <a href='assets/actions/update.php' class='col bg-dark p-3 azioni-1 text-decoration-none text-light'>MODIFICA UTENTI</a>";
+                    } ?>
      
                 </div>
             </div>

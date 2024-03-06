@@ -24,6 +24,11 @@
                     <a class="nav-link" href="#">Aiuto</a>
                  </li>
             </ul>
+            <?php 
+                if(isset($_SESSION['admin']) && $_SESSION['admin'] == true) {
+                    echo "<li class='text-warning'>ADMIN</li>";
+                }
+            ?>
             <?php if(basename($_SERVER['PHP_SELF']) == 'index.php') { 
                 echo "<a href='logout.php' class='text-decoration-none text-dark fw-semibold border border-2 p-1'>Esci</a>";
             }

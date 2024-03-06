@@ -31,7 +31,26 @@ namespace GestioneUtentiDTO {
                 echo "Errore durante l'aggiunta dell'utente: " . $e->getMessage();
                 return false;
             }
-        }        
+        }
+        
+        public function updateUser($id, $name, $email, $password) {
+            try {
+                $sql = "UPDATE pdo_datiSensibili.user SET nameUser = :name, email = :email, passW = :password WHERE id = :id";
+                
+                $stmt = $this->conn->prepare($sql);
+                $stmt->execute([
+                    ':id' => $id,
+                    ':name' => $name,
+                    ':email' => $email,
+                    ':password' => $password
+                ]);
+                return true;
+            } catch (\PDOException $e) {
+                echo "Errore durante l'aggiornamento dell'utente: " . $e->getMessage();
+                return false;
+            }
+        }
+        
 
     }
 

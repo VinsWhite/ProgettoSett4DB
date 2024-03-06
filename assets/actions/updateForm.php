@@ -1,4 +1,4 @@
-<?php
+<?php 
 require_once '../partials/header.php'; 
 require_once '../database/database.php';
 require_once '../database/gestioneUtentiDTO.php';
@@ -18,26 +18,25 @@ if (!isset($_SESSION['admin']) && $_SESSION['admin'] == false){
 use db\DB_PDO;
 use GestioneUtentiDTO\Admin;
 
-if(isset($_POST['email']) && isset($_POST['name']) && isset($_POST['password'])) {
+$PDOConn = DB_PDO::getInstance($config);
+$conn = $PDOConn->getConnection();
 
-    $email = $_POST['email'];
-    $name = $_POST['name'];
-    $password = $_POST['password'];
+$utenti = new Admin ($conn);
 
-    $PDOConn = DB_PDO::getInstance($config);
-    $conn = $PDOConn->getConnection();
-
-    $utenti = new Admin($conn);
-
-    $result = $utenti->addUser($name, $email, $password);
+// Verifica se l'ID dell'utente è stato passato nella URL
+if(isset($_GET['id']) && isset($_GET['nameUser'])) {
+    $userId = $_GET['id'];    
+    $nameUser = $_GET['nameUser'];  
+} else {
+    header('Location: update.php');
 }
 ?>
 
 <main class="container mt-4 mb-5 ">
-    <h1 class="fw-semibold">Pagina di aggiunta! <i class="bi bi-pencil-square"></i></h1>
+    <h1 class="fw-semibold">Pagina di modifica! <i class="bi bi-pencil-square"></i></h1>
 
     <section class="mt-4 py-3 border-top">
-        <h3 class="ms-5">Aggiungi un nuovo utente!</h3>
+        <h3>Modifica utente <span class="fw-semibold"><?php echo $nameUser; ?></span></h3>
         <form action="add.php" method="POST" enctype="multipart/form-data" class="mx-5 bg-body-secondary rounded-2 p-4 shadow">
             <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Indirizzo Email <span class="text-danger">*</span></label>
@@ -51,7 +50,7 @@ if(isset($_POST['email']) && isset($_POST['name']) && isset($_POST['password']))
                 <label for="exampleInputPassword1" class="form-label">Password <span class="text-danger">*</span></label>
                 <input type="password" name="password" class="form-control" id="exampleInputPassword1">
             </div>
-            <button type="submit" class="btn btn-secondary">Aggiungi</button>
+            <button type="submit" class="btn btn-secondary">Modifica</button>
             <?php 
                 /* if(isset($_SESSION['add-user'])) {
                     if($_SESSION['add-user']) {

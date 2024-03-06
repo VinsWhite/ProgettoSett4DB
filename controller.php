@@ -26,6 +26,11 @@ if(isset($_REQUEST['email']) && isset($_REQUEST['password'])) {
     if($user) {
         session_start();
 
+        // se l'email corrisponde con questa qui, si tratta di un admin che potrà fare più cose di un utente normale
+        if($email == 'Admin@admin.com'){
+            $_SESSION['admin'] = true; 
+        }
+
         // Utente autenticato con successo
         $_SESSION['logged_in'] = true; // Evitiamo di memorizzare email e password nella sessione per problemi di sicurezza
         header('Location: index.php');
