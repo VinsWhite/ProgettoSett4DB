@@ -1,0 +1,14 @@
+Il progetto è organizzato in questo modo: 
+
+- assets (qui trovare importanti file necessari per il corretto funzionamento del progetto)
+    - actions (qui troviamo le azioni di CRUD per leggere gli utenti)
+    - css 
+    - database (qui troviamo il file di configurazione del database e la gestione delle classi)
+    - img 
+    - partials (file parziali: navbar, header e footer)
+
+- controller.php (controllo login con reindirizzamento alla pagina index principale)
+- index.php (pagina principale accessibile solo dopo aver fatto il login)
+- login.php (pagina login - non più accessibile dopo aver fatto il login, a meno che non venga effettuato il logout)
+- logout.php (gestione logout con reindirizzamento alla pagina di login)
+- percorso.txt (questo file)

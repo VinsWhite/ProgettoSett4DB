@@ -1,0 +1,20 @@
+body {
+    user-select: none;
+}
+
+.azioni-1 {
+    cursor: pointer;
+}
+
+.azioni-2 {
+    cursor: pointer;
+}
+
+
+.azioni-1:hover {
+    background-color: rgb(61, 60, 60) !important;
+}
+
+.azioni-2:hover {
+    background-color: rgb(248, 75, 75) !important;
+}
